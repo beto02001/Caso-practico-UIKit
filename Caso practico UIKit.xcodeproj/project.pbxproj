@@ -106,9 +106,8 @@
 		C7537CAB2882959B00819794 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C75A85C9288299B4009EC654 /* Principal */,
 				C7537CAC2882967B00819794 /* Lista Productos  */,
-				C7537C8E2882944A00819794 /* ViewController.swift */,
-				C7537C902882944A00819794 /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -120,6 +119,15 @@
 				C75A85C7288296F9009EC654 /* ListProductosViewController.swift */,
 			);
 			path = "Lista Productos ";
+			sourceTree = "<group>";
+		};
+		C75A85C9288299B4009EC654 /* Principal */ = {
+			isa = PBXGroup;
+			children = (
+				C7537C8E2882944A00819794 /* ViewController.swift */,
+				C7537C902882944A00819794 /* Main.storyboard */,
+			);
+			path = Principal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
