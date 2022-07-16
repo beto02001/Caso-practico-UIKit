@@ -9,17 +9,32 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    @IBOutlet weak var contenedorDatosView: UIView!
+    @IBOutlet weak var nombreLabel: UILabel!
+    @IBOutlet weak var productoImageView: UIImageView!
+    
     private var viewmodel: ProductosViewModel = ProductosViewModel()
     private var productos = [Producto](){
         didSet {
           print("cambio")
         }
     }
+    var index: Int = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Esto esel indice: \(index)")
         viewmodel.getProductos()
         obtener()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if index != -1 {
+            contenedorDatosView.isHidden = false
+            nombreLabel.text = productos[index].nombre
+            productoImageView.load(urlString: productos[index].urlImagenes![0])
+        }
     }
 
     private func obtener(){

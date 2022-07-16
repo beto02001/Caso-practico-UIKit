@@ -19,6 +19,7 @@
 		C75A85C6288296CD009EC654 /* ListProductos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C75A85C5288296CD009EC654 /* ListProductos.storyboard */; };
 		C75A85C8288296F9009EC654 /* ListProductosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75A85C7288296F9009EC654 /* ListProductosViewController.swift */; };
 		C75A85CB28829B3E009EC654 /* ProductoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75A85CA28829B3E009EC654 /* ProductoTableViewCell.swift */; };
+		C75A85CE28829DBC009EC654 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75A85CD28829DBC009EC654 /* UIImageExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		C75A85C5288296CD009EC654 /* ListProductos.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListProductos.storyboard; sourceTree = "<group>"; };
 		C75A85C7288296F9009EC654 /* ListProductosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProductosViewController.swift; sourceTree = "<group>"; };
 		C75A85CA28829B3E009EC654 /* ProductoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductoTableViewCell.swift; sourceTree = "<group>"; };
+		C75A85CD28829DBC009EC654 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		C7537CA2288294E600819794 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C75A85CC28829D85009EC654 /* Extensions */,
 				C7537CA32882950200819794 /* Observable.swift */,
 				C7537C932882944C00819794 /* Assets.xcassets */,
 			);
@@ -131,6 +134,14 @@
 				C7537C902882944A00819794 /* Main.storyboard */,
 			);
 			path = Principal;
+			sourceTree = "<group>";
+		};
+		C75A85CC28829D85009EC654 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C75A85CD28829DBC009EC654 /* UIImageExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +221,7 @@
 				C7537CA42882950200819794 /* Observable.swift in Sources */,
 				C7537C8F2882944A00819794 /* ViewController.swift in Sources */,
 				C7537C8B2882944A00819794 /* AppDelegate.swift in Sources */,
+				C75A85CE28829DBC009EC654 /* UIImageExtension.swift in Sources */,
 				C7537C8D2882944A00819794 /* SceneDelegate.swift in Sources */,
 				C7537CA82882956100819794 /* ProductosViewModel.swift in Sources */,
 				C7537CAA2882957F00819794 /* ProductosModel.swift in Sources */,

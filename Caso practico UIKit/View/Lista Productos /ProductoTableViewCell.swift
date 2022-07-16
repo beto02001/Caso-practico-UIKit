@@ -8,10 +8,13 @@
 import UIKit
 
 class ProductoTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var productoUIImage: UIImageView!
+    @IBOutlet weak var nombreProductoLabel: UILabel!
+    @IBOutlet weak var precioProductoLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
