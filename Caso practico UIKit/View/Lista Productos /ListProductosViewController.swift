@@ -7,21 +7,36 @@
 
 import UIKit
 
+//--------------------------------------------------------------------------
+//MARK: - Protocol
+//--------------------------------------------------------------------------
+protocol ListProductosViewControllerDelegate: AnyObject {
+    func productoSelect(datos: Producto)
+}
+
 class ListProductosViewController: UIViewController {
-    
+    //--------------------------------------------------------------------------
+    //MARK: - Outlet
+    //--------------------------------------------------------------------------
     @IBOutlet weak var productosTableVIew: UITableView!
     
+    //--------------------------------------------------------------------------
+    //MARK: - Properties
+    //--------------------------------------------------------------------------
+    weak var delegate: ListProductosViewControllerDelegate?
     var productos = [Producto]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         productosTableVIew.delegate = self
         productosTableVIew.dataSource = self
-        print("en la nueva: ", productos.first?.nombre)
     }
 
 }
 
+//--------------------------------------------------------------------------
+//MARK: - UITableView Delegate - DataSource
+//--------------------------------------------------------------------------
 extension ListProductosViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return productos.count
@@ -37,18 +52,10 @@ extension ListProductosViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Indice: ", indexPath.row)
         let SBMain = UIStoryboard(name: "Main", bundle: nil)
-        if let vc = SBMain.instantiateViewController(withIdentifier: "mainSB") as? ViewController {
-            vc.index = indexPath.row
-            vc.viewDidLoad()
-            navigationController?.popViewController(animated: true)
-            
-        }
-    }
-    
-    func openGenerarSalida(index: Int?) {
-        guard let i = index else { return }
-        performSegue(withIdentifier: "confirmarSalidaExpress", sender: i)
+        guard SBMain.instantiateViewController(withIdentifier: "mainSB") is ViewController else {return}
+        self.delegate?.productoSelect(datos: productos[indexPath.row])
+        
+        navigationController?.popViewController(animated: true)
     }
 }

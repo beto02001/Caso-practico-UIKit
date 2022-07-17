@@ -70,12 +70,12 @@
 		C7537C892882944A00819794 /* Caso practico UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				C7537CA2288294E600819794 /* Helpers */,
-				C7537C8A2882944A00819794 /* AppDelegate.swift */,
-				C7537CA52882952D00819794 /* ViewModel */,
-				C7537C8C2882944A00819794 /* SceneDelegate.swift */,
 				C7537CA62882954200819794 /* Model */,
 				C7537CAB2882959B00819794 /* View */,
+				C7537CA52882952D00819794 /* ViewModel */,
+				C7537CA2288294E600819794 /* Helpers */,
+				C7537C8A2882944A00819794 /* AppDelegate.swift */,
+				C7537C8C2882944A00819794 /* SceneDelegate.swift */,
 				C7537C952882944C00819794 /* LaunchScreen.storyboard */,
 				C7537C982882944C00819794 /* Info.plist */,
 			);

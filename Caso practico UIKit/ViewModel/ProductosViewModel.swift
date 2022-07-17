@@ -13,11 +13,7 @@ class ProductosViewModel{
     var productosData = Observable([Producto]())
     
     func getProductos(){
-        guard let url = URL(string: "http://alb-dev-ekt-875108740.us-east-1.elb.amazonaws.com/sapp/productos/plp/1/ad2fdd4bbaec4d15aa610a884f02c91a") else {
-            print("no se pudo con la url")
-            return
-            
-        }
+        guard let url = URL(string: "http://alb-dev-ekt-875108740.us-east-1.elb.amazonaws.com/sapp/productos/plp/1/ad2fdd4bbaec4d15aa610a884f02c91a") else { return }
         let urlsession = URLSession.shared
         urlsession.dataTask(with: url){ data, response, error in
             if let _ = error{
@@ -31,13 +27,12 @@ class ProductosViewModel{
             do{
                 let dataProductos = try JSONDecoder().decode(ProductosModel.self, from: data)
                 let prods = dataProductos.resultado.productos
-                print(prods.first?.nombre!)
                 self.productosData.value.append(contentsOf: prods)
-        
             } catch{
                 print("No se pudo")
                 return
             }
+
             
         }.resume()
     }

@@ -9,12 +9,20 @@ import UIKit
 
 class ProductoTableViewCell: UITableViewCell {
     
+    //--------------------------------------------------------------------------
+    //MARK: - Outlets
+    //--------------------------------------------------------------------------
+    @IBOutlet weak var vistaAmarillaView: UIView!
     @IBOutlet weak var productoUIImage: UIImageView!
     @IBOutlet weak var nombreProductoLabel: UILabel!
     @IBOutlet weak var precioProductoLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        vistaAmarillaView.layer.cornerRadius = 17
+        
+        productoUIImage.layer.cornerRadius = 15
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
