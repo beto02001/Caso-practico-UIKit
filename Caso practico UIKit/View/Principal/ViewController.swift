@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, ListProductosViewControllerDelegate {
+class ViewController: UIViewController {
     
     //--------------------------------------------------------------------------
     //MARK: - Outlets
@@ -35,6 +35,7 @@ class ViewController: UIViewController, ListProductosViewControllerDelegate {
         
         setupDesingDatoView()
         setupDesingButton()
+        setDelegates()
     }
     
     //--------------------------------------------------------------------------
@@ -57,9 +58,51 @@ class ViewController: UIViewController, ListProductosViewControllerDelegate {
         productosBtn.layer.shadowOpacity = 0.8
     }
     
+    /// Método para configurar los delegados
+    func setDelegates() {
+        viewmodel.viewProtocolProducts = self
+    }
+    
     //--------------------------------------------------------------------------
     //MARK: - Methods
     //--------------------------------------------------------------------------
+    func navigateToListProduct() {
+        let SBLista = UIStoryboard(name: "ListProductos", bundle: nil)
+        if let vc = SBLista.instantiateViewController(withIdentifier: "listaProductos") as?  ListProductosViewController {
+            vc.productos = productos
+            vc.delegate = self
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    //--------------------------------------------------------------------------
+    //MARK: - IBAction's
+    //--------------------------------------------------------------------------
+    
+    ///  Método para seleccionar el botón individualButton y deseleccionar el botón grupalButton.
+    ///  - Parameter sender: Acepta cualquier CustomButton.
+    @IBAction func obtenerProductos(_ sender: UIButton) {
+        //viewmodel.getProductos()
+        viewmodel.getProductsAF { arrayProducts, error in
+            if let error = error {
+                print("Error al obtener productos: \(error)")
+            } else if let productosModel = arrayProducts {
+                print("Productos obtenidos")
+            }
+        }
+    }
+}
+
+extension ViewController: ResultGetProducts {
+    func succes(data: [Producto]) {
+        DispatchQueue.main.async {
+            self.productos = data
+            self.navigateToListProduct()
+        }
+    }
+}
+
+extension ViewController: ListProductosViewControllerDelegate {
     func productoSelect(datos: Producto) {
         contenedorDatosView.isHidden = false
         self.nombreLabel.text = datos.nombre!
@@ -71,30 +114,4 @@ class ViewController: UIViewController, ListProductosViewControllerDelegate {
         self.montoDescuentoLabel.text = "Monto descuento: $\(String(describing: datos.montoDescuento!))"
         self.precioFinalLabel.text = "Precio final: $\(String(describing: datos.precioFinal!))"
     }
-
-    private func obtener(){
-        viewmodel.productosData.bind { [weak self] resp in
-            self?.productos = resp
-        }
-    }
-    
-    //--------------------------------------------------------------------------
-    //MARK: - IBAction's
-    //--------------------------------------------------------------------------
-    
-    ///  Método para seleccionar el botón individualButton y deseleccionar el botón grupalButton.
-    ///  - Parameter sender: Acepta cualquier CustomButton.
-    @IBAction func obtenerProductos(_ sender: UIButton) {
-        viewmodel.getProductos()
-        obtener()
-        let SBLista = UIStoryboard(name: "ListProductos", bundle: nil)
-        if let vc = SBLista.instantiateViewController(withIdentifier: "listaProductos") as?  ListProductosViewController {
-            while productos.isEmpty{ sleep(1) }
-            vc.productos = productos
-            vc.delegate = self
-            navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
 }
-
