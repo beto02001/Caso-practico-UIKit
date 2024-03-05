@@ -14,6 +14,10 @@ protocol ListProductosViewControllerDelegate: AnyObject {
     func productoSelect(datos: Producto)
 }
 
+protocol ResultGetProducts: AnyObject {
+    func succes(data: [Producto])
+}
+
 class ListProductosViewController: UIViewController {
     //--------------------------------------------------------------------------
     //MARK: - Outlet
