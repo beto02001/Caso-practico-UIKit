@@ -36,6 +36,22 @@ class ListProductosViewController: UIViewController {
         productosTableVIew.dataSource = self
     }
 
+    //--------------------------------------------------------------------------
+    //MARK: - Methods
+    //--------------------------------------------------------------------------
+    func sortItems() {
+        productos = productos.sorted(by: { $0.precioFinal ?? 0.0 > $1.precioFinal ?? 0.0 })
+        DispatchQueue.main.async {
+            self.productosTableVIew.reloadData()
+        }
+    }
+    
+    //--------------------------------------------------------------------------
+    //MARK: - IBAction's
+    //--------------------------------------------------------------------------
+    @IBAction func sortItemsForPrice(_ sender: UIBarButtonItem) {
+        sortItems()
+    }
 }
 
 //--------------------------------------------------------------------------

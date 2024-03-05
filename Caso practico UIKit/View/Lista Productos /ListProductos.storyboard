@@ -92,7 +92,13 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="H7J-HG-efI" secondAttribute="trailing" id="TmK-Vm-D3y"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Productos" id="1mn-Ej-ay2"/>
+                    <navigationItem key="navigationItem" title="Productos" id="1mn-Ej-ay2">
+                        <barButtonItem key="rightBarButtonItem" title="Sort" id="zCu-i3-sNm">
+                            <connections>
+                                <action selector="sortItemsForPrice:" destination="Y6W-OH-hqX" id="oSt-LF-Jd9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="productosTableVIew" destination="H7J-HG-efI" id="qbD-0s-bzT"/>
                     </connections>
